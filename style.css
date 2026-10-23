@@ -1,0 +1,172 @@
+/* ==========================================================================
+   Global Variables & Imports
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Roboto:wght@400;700;800&display=swap');
+
+:root {
+    --bg-app: #FAC5ED;         
+    --text-primary: #2b2d42;    
+    --bg-second-color: #C5D2FA;      
+    --text-change: #FFFFFF;     
+
+    --font-title: 'Amatic SC', cursive;
+    --font-body: 'Roboto', sans-serif;
+}
+
+/* ==========================================================================
+   Base Layout
+   ========================================================================== */
+html, body, .stApp {
+    background-color: var(--bg-app) !important;
+    height: 100vh !important;
+    overflow: hidden !important; /* Removes global scrollbars */
+}
+
+/* Hides Streamlit header */
+header[data-testid="stHeader"],
+[data-testid="stHeader"] {
+    display: none !important;
+}
+
+/* Central Card Container */
+[data-testid="stMainBlockContainer"],
+.main .block-container {
+    background-color: var(--bg-second-color) !important;
+    border-radius: 20px !important;
+    border: 2px solid var(--text-primary) !important;
+    
+    padding: 1.2rem 1.8rem !important;
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+    max-height: calc(100vh - 2rem) !important;
+    
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Compacts automatic spacing between Streamlit blocks */
+[data-testid="stVerticalBlock"] {
+    gap: 0.5rem !important;
+}
+
+/* Base Typography */
+p:not(.stButton p),
+[data-testid="stMarkdownContainer"] p,
+.stButton > button p,
+.stButton > button span,
+.metric-label,
+.metric-value,
+h3, 
+h3 span {
+    font-family: var(--font-body) !important;
+    color: var(--text-primary) !important;
+}
+
+p:not(.stButton p),
+[data-testid="stMarkdownContainer"] p {
+    font-size: 1rem !important;
+    margin-bottom: 0.2rem !important;
+}
+
+/* ==========================================================================
+   Headers, Titles & Dividers
+   ========================================================================== */
+h1, 
+h1 span, 
+[data-testid="stHeader"] h1 {
+    font-family: var(--font-title) !important;
+    font-size: 3rem !important;
+    font-weight: 700 !important;
+    color: var(--text-primary) !important;
+    margin: 0 !important;
+    line-height: 1.1 !important;
+    text-align: center;
+}
+
+h3, 
+h3 span {
+    font-size: 1.2rem !important;
+    font-weight: 700 !important;
+    margin: 0 !important;
+}
+
+/* Hides title header link icons */
+[data-testid="stHeaderActionElements"], 
+h1 a, 
+h3 a {
+    display: none !important;
+}
+
+hr {
+    margin-top: 0.4rem !important;
+    margin-bottom: 0.4rem !important;
+}
+
+/* ==========================================================================
+   Custom Components (Rate & ID Cards)
+   ========================================================================== */
+.metric-card {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.metric-label {
+    font-size: 0.95rem !important;
+    font-weight: 700 !important;
+}
+
+.metric-value {
+    font-size: 2.0rem !important;
+    font-weight: 800 !important;
+    line-height: 1.0 !important;
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+.stButton > button, 
+[data-testid="baseButton-secondary"] {
+    background-color: var(--bg-second-color) !important;
+    color: var(--text-primary) !important;
+    border: 2px solid var(--text-primary) !important;
+    border-radius: 12px !important;
+    padding: 6px 14px !important;
+    height: auto !important;
+    min-height: 38px !important;
+    transition: all 0.3s ease !important;
+}
+
+.stButton > button p, 
+.stButton > button span {
+    font-size: 0.95rem !important;
+    font-weight: bold !important;
+    color: var(--text-primary) !important;
+    transition: color 0.3s ease !important;
+}
+
+.stButton > button:hover, 
+[data-testid="baseButton-secondary"]:hover {
+    background-color: var(--text-primary) !important;
+    border-color: var(--text-primary) !important;
+}
+
+.stButton > button:hover p, 
+.stButton > button:hover span,
+[data-testid="baseButton-secondary"]:hover p,
+[data-testid="baseButton-secondary"]:hover span {
+    color: var(--text-change) !important;
+}
+
+/* ==========================================================================
+   Pokémon Image Height Restriction
+   ========================================================================== */
+[data-testid="stImage"] {
+    display: flex !important;
+    justify-content: center !important;
+}
+
+[data-testid="stImage"] img {
+    max-height: 160px !important; /* Controls height to prevent pushing card container */
+    width: auto !important;
+    object-fit: contain !important;
+}
